@@ -1,9 +1,6 @@
 var register = document.querySelector(".register");
 register.addEventListener("click",regist);
 function regist() {
-
-  var url = "localhost:3000";
-
   var data = {};
   data.title = document.querySelector(".subj").value;
   data.category = document.querySelector(".select").value;
@@ -27,7 +24,7 @@ function regist() {
   } else if (data.response === "" ) {
     alert("글의 신뢰성을 선택해주세요 ")
   } else {
-    xhrSend(url,data,"post");
+    xhrSend("/write",data,"post");
   }
 }
 
@@ -39,7 +36,8 @@ function regist() {
 
 
 function xhrSend(url,data,method) {
-
+    url += "localhost:3000";
+    //url += "18.222.129.254:3000"
     data = JSON.stringify(data)
     var xhr = new XMLHttpRequest();
 
