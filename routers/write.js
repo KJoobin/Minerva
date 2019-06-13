@@ -64,6 +64,7 @@ router.post('/', upload.array('img'), function(req,res) {
   connection.query(`INSERT INTO post SET  ? `,info,function(err,rows) {
     if(err) throw err;
   })
+  console.log("write ok")
   res.send();
 })
 
