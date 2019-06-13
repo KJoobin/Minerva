@@ -31,7 +31,7 @@ const connection = mysql.createConnection({
   host      : 'localhost',
   user      : 'root',
   password  : 'baby',
-  database  : 'Minerva'
+  database  : 'minerva'
 });
 
 connection.connect();
