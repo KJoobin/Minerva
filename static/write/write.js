@@ -1,54 +1,52 @@
 var register = document.querySelector(".register");
 register.addEventListener("click",regist);
 function regist() {
-  var data = {};
-  data.title = document.querySelector(".subj").value;
-  data.category = document.querySelector(".select").value;
-  data.tag = document.querySelector(".tag").value;
-  data.desc = document.querySelector(".textArea").value;
-  data.source = document.querySelector(".source").value;
-  data.response = "";
+  var formData = new FormData();
+  formData.append("title", document.querySelector(".subj").value)
+  formData.append("category", document.querySelector(".select").value)
+  formData.append("tag", document.querySelector(".tag").value)
+  formData.append("desc", document.querySelector(".textArea").value)
+  formData.append("source", document.querySelector(".source").value)
   var response = document.querySelectorAll('input[name="responsibility"]');
   for(var i = 0; i < 3; i++) {
     console.log(response[i].checked)
     if(response[i].checked) {
-      data.response = response[i].value;
+      formData.append("response",response[i].value)
     }
   }
-  if(data.title.length < 5 ) {
-    alert("제목을 5글자 이상 입력해주세요")
-  }else if(data.desc.length < 50 ) {
+
+  for(var i = 0; i < 4; i++) {
+    if(document.querySelectorAll('input[name = "pic"]')[i].files[0] !== undefined) {
+      formData.append("img",document.querySelectorAll('input[name = "pic" ]')[i].files[0])
+    }
+  }
+  if(formData.get("title").length < 5 && formData.get("title").length > 45) {
+    alert("제목이 너무 길거나 짧습니다 5글자이상 50글자 이하로 입력해주세요")
+  }else if(formData.get("desc").length < 50 ) {
     alert("내용을 50글자 이상 입력해주세요")
-  }else if (!data.source.length) {
+  }else if (!formData.get("source").length) {
     alert("출처를 정확히 입력해주세요")
-  } else if (data.response === "" ) {
+  } else if (formData.get("response") === "" ) {
     alert("글의 신뢰성을 선택해주세요 ")
   } else {
-    xhrSend("/write",data,"post");
+    fetchSend("/write",formData,"post");
   }
+
+  console.log(formData.getAll('img'));
+  console.log(formData.get('title'));
 }
 
-
-
-
-
-
-
-
-function xhrSend(url,data,method) {
-    url += "localhost:3000";
-    //url += "18.222.129.254:3000"
-    data = JSON.stringify(data)
-    var xhr = new XMLHttpRequest();
-
-    xhr.open(method,url);
-    xhr.setRequestHeader(`Content-type`,`application/json`);
-    xhr.send(data);
-
-    console.log(url);
-
-    xhr.addEventListener('load',function() {
-      var result = JSON.parse(xhr.responseText);
-          window.location.href="/"
-  })
+function fetchSend(url,data,method) {
+  url = "http://localhost:3000" + url;
+  //url = "18.222.129.254:3000 + url"
+  fetch(url,{
+    method:method,
+    body:data
+  }).then((res) => {
+    if(res.status === 200 || res.status === 201 ) {
+      window.location.href="/"
+    } else {
+      console.error(res.statusText);
+    }
+  }).catch(err => console.error(err));
 }

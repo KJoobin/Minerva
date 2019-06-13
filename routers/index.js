@@ -3,6 +3,7 @@ var app = express()
 var router = express.Router()
 var path = require("path")
 var write = require("./write.js")
+var read = require('./read.js')
 
 // var path = require('path')
 // var join = require('./join/join')
@@ -29,4 +30,5 @@ var write = require("./write.js")
 // router.use('/main',main)
 
 router.use("/write",write)
+router.use('/read',read)
 module.exports = router
