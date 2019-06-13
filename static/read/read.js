@@ -17,8 +17,8 @@ function list(obj) {
 }
 
 function xhrSend(url,data,method) {
-    url = "http://localhost:3000" + url;
-    //url = "18.222.129.254:3000 + url"
+    // url = "http://localhost:3000" + url;
+    url = "18.222.129.254:3000" + url
     console.log(data);
     var xhr = new XMLHttpRequest();
 
