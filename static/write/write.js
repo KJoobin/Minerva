@@ -9,7 +9,6 @@ function regist() {
   formData.append("source", document.querySelector(".source").value)
   var response = document.querySelectorAll('input[name="responsibility"]');
   for(var i = 0; i < 3; i++) {
-    console.log(response[i].checked)
     if(response[i].checked) {
       formData.append("response",response[i].value)
     }
@@ -44,6 +43,7 @@ function fetchSend(url,data,method) {
     body:data
   }).then((res) => {
     if(res.status === 200 || res.status === 201 ) {
+      console.log("path 작동 ");
       window.location.href="/"
     } else {
       console.error(res.statusText);
