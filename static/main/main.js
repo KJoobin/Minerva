@@ -3,8 +3,10 @@ function ckMore() {
 }
 
 function init() {
+
   var more = document.querySelector('.more')
   more.addEventListener('click',ckMore)
+
 }
 
 init();

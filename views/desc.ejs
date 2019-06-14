@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="Expand">
+  <head>
+    <link rel="stylesheet" href="/style.css">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body class="Expand">
+    <div class = "page_head">
+      <div class="logo"><img src="https://nearbyfriends.s3.ap-northeast-2.amazonaws.com/Minerva/Minerva_logo.jpeg"></a></div>
+      <div class="copy"><div> C O P Y </div></div>
+      <div class="main_profile">
+        <button class="H(100)" id='js-login_button'> 로그인/회원가입 </button>
+        <div class="profile none" id=<%=id%>> <img src= <%= picture %> > </div>
+      </div>
+    </div>
+    <div id='modal-manage'></div>
+    <div class="posG">
+    <div class="Ad left"></div>
+    <div class= "layout">
+      <div class='desc_lay'>
+        <div>
+          <span class="MT ML subject"><%= subject %> </span>
+          <span class="MT ML category"> <%= category %></span>
+          <span class="ML MT tag"> #<%= tag %> </span>
+        </div>
+        <div>
+          <div class='creat'><%= create %></div>
+        </div>
+      </div>
+      <div class='desc_lay '>
+
+      </div>
+      <div class='desc_lay desc content_H'>
+        <div class='content'><%= content %></div>
+      </div>
+      <div>
+        <div class="ML MT ">출처</div>
+        <div><%= source %></div>
+        <div class="ML MT"> 첨부파일 </div>
+      </div>
+      <div>
+        <div class ="ML MT"> 글 의 신뢰성 </div>
+        <div> <%= response %></div>
+      </div>
+      <div class="center">
+        <div>
+          <div>
+            <input type='radio' name='emotion'>
+          </div>
+          <div> <%= emotion1 %></div>
+        </div>
+        <div>
+          <div>
+            <input type='radio' name='emotion'>
+          </div>
+          <div> <%= emotion2 %></div>
+        </div>
+        <div>
+          <div>
+            <input type='radio' name='emotion'>
+          </div>
+          <div> <%= emotion3 %></div>
+        </div>
+      </div>
+      <ul class='list-group'>
+        <li id="note-title" class="list-group-item note-title">
+          <h3 class="panel-title">댓글 <span id="note-count">24</span></h3>
+        </li>
+        <!-- 댓글   -->
+        <li class="list-group-item note-item clearfix" id="note-1712913">
+          <div class="content-body panel-body pull-left">
+              <div class="avatar avatar-medium clearfix "><div class="avatar-info"><a class="nickname" href="/user/info/16500" title="낭군이">낭군이</a><div class="date-created"><span class="timeago" title="2019-06-10 17:16:28.0">2019-06-10 17:16:28</span> </div> </div></div>
+              <fieldset class="form">
+                  <article id="note-text-1712913" class="list-group-item-text note-text">
+                          멋져요:)
+                  </article>
+              </fieldset>
+          </div>
+          <div class="content-function pull-right text-center">
+              <div class="content-function-group">
+                  <div class="note-evaluate-wrapper"><a href="javascript://" class="note-vote-btn" role="button" data-type="assent" data-eval="true" data-id="1712913"><i id="note-evaluate-assent-1712913" class="fa fa-angle-up note-evaluate-assent-assent" data-placement="left" data-toggle="tooltip" title="" data-original-title="추천"></i></a><div id="content-vote-count-1712913" class="content-eval-count">0</div><a href="javascript://" class="note-vote-btn" role="button" data-type="dissent" data-eval="true" data-id="1712913"><i id="note-evaluate-dissent-1712913" class="fa fa-angle-down note-evaluate-dissent-dissent" data-placement="left" data-toggle="tooltip" title="" data-original-title="반대"></i></a></div>
+              </div>
+          </div>
+      <form action="/content/delete/1712913" method="post" id="note-delete-form-1712913"><input type="hidden" name="_method" value="DELETE" id="_method">
+      </form>
+      </li>
+      <!-- 내 댓글창 -->
+        <li class="list-group-item note-form clearfix">
+          <!-- <form action="/read" method="post" class="note-create-form">  -->
+            <input type="hidden" name="lastNoteId" value="1714927 " id="lastNoteId">
+              <div class="content-body panel-body pull-left note-create-form">
+                <div style="margin-left: 5px;">
+                  <div class="avatar avatar-medium clearfix "><div class="avatar-info"><a class="nickname" href="/user/info/84154" title=<%=myNick%>><%=myNick%></a> <div class="activity block"></div></div></div>
+                </div>
+                  <fieldset class="form">
+                      <input type="hidden" name="note.textType" value="HTML" id="note.textType">
+                      <textarea name="note.text" id="note-create" placeholder="댓글 쓰기" class="form-control"></textarea>
+                  </fieldset>
+              </div>
+              <div class="content-function-cog note-submit-buttons clearfix">
+                  <p><a href="javascript://" id="note-create-cancel-btn" class="btn btn-default btn-wide" style="display: none;">취소</a></p>
+                  <input type="submit" name="create" id="btn-create-btn" class="btn btn-success btn-wide" value=" 등록">
+              </div>
+          <!-- </form> -->
+
+
+          </li>
+        </div>
+      </div>
+    </div>
+    <div class="Ad right"></div>
+    </div>
+  </body>
+  <script src="/modal.js"></script>
+  <script src='/topHead.js'></script>
+  <script src='/read/comment.js'></script>
+  <script src='/xhrSend.js'></script>
+  <script src='/log/modal.js'></script>
+
+</html>

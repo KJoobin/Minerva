@@ -1,4 +1,4 @@
-a{
+ a{
   color:black;
   cursor: none;
   text-decoration: none;
@@ -183,6 +183,9 @@ input {
 .H\(100\) {
   height: 100px;
 }
+.H\(50\%\) {
+  height:50%;
+}
 
 /* (I) */
 .info_menu {
@@ -232,6 +235,7 @@ input {
   right:0px;
   width:100%;
   height: 100%;
+  z-index: 1;
 }
 .modalPosition {
   margin-top:90px;
@@ -375,6 +379,7 @@ body {
   height: 100%;
   margin:0px;
 }
+/* page layout */
 .page_head {
   width:100%;
   height :10%;
@@ -388,6 +393,7 @@ body {
   grid-template-columns: 2fr 7fr 2fr;
   height:150%
 }
+/* page head */
 .logo {
   margin-left:10px;
   height:100%;
@@ -612,4 +618,105 @@ font-size: 50px;
 .desc {
   font-size : 18px;
   margin-bottom: 20px;
+}
+/* desc */
+.desc_lay {
+  background-color: white;
+  border-color: #ddd;
+  border : 0.1px #ddd solid;
+}
+.subject {
+  font-size: 40px;
+}
+.category {
+  font-size :  30px;
+  margin-left : 100px;
+}
+.creat {
+}
+.tag{
+}
+.content_H {
+  height: auto;
+  min-height: 400px;
+}
+.content {
+  margin : 10px;
+}
+/*  comment */
+textarea.form-control {
+  height:auto;
+}
+.form-control {
+  border-radius:0 !important
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+textarea {
+  overflow: auto;
+  margin : 0;
+  font : inherit;
+}
+.paner-body {
+  padding:5px;
+}
+.content-body {
+  width:100%;
+  border-right:none;
+}
+.pull-left {
+  float:left !important
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.note-title {
+  padding: 10px 15px;
+  background-color: #f2f2f2;
+}
+.note-form {
+  padding-top : 20px;
+}
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: inherit;
+}
+fieldset {
+  border-width: 0px;
+}
+/* 댓글창 */
+.nickname {
+  font-size:14px;
+  line-height:20px;
+}
+.nickname {
+  display : inline-block;
+  vertical-align: middle;
+}
+a.nickname {
+  color : #2a6496;
+  text-decoration: none;
+}
+.timeago {
+  color:#ccc;
+  font-size:12px;
 }

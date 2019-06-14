@@ -36,8 +36,8 @@ function regist() {
 }
 
 function fetchSend(url,data,method) {
-  // url = "http://localhost:3000" + url;
-  url = "http://18.222.129.254:3000" + url
+  url = "http://localhost:3000" + url;
+  // url = "http://18.222.129.254:3000" + url
   fetch(url,{
     method:method,
     body:data

@@ -4,6 +4,9 @@ var router = express.Router()
 var path = require("path")
 var write = require("./write.js")
 var read = require('./read.js')
+var login = require('./login.js')
+var logout = require('./logout.js')
+var join = require('./join.js')
 
 // var path = require('path')
 // var join = require('./join/join')
@@ -17,7 +20,13 @@ var read = require('./read.js')
 
 
   router.get('/',function(req,res) {
-    res.render(path.join(__dirname,"../views/main.ejs"))
+    if(req.user) {
+      console.log(req.user.picture)
+      req.user.picture === null ? pic = "" : pic = req.user.picture
+      res.render(path.join(__dirname,"../views/main.ejs"),{id:req.user.id, picture : pic})
+    } else {
+      res.render(path.join(__dirname,"../views/main.ejs"),{id:"", picture:""})
+    }
   })
 
 // router.use('/join',join)
@@ -31,4 +40,9 @@ var read = require('./read.js')
 
 router.use("/write",write)
 router.use('/read',read)
+router.use('/login',login)
+router.use('/logout',logout)
+router.use('/join',join)
+
+
 module.exports = router

@@ -4,7 +4,7 @@ function makePost(data) {
   for(var i = 0; i < data.length; i++) {
      posts.innerHTML += list(data[i])
   }
-  return posts;
+  postListCk();
 }
 
 function list(obj) {
@@ -13,27 +13,30 @@ function list(obj) {
   var author = `<div class='author'>${obj.UID}</div>`
   var listTop = `<div class='list_top'> ${title} ${author} </div>`
   var listBot = `<div class='list_bot'>${desc}</div>`
-  return `<div class='post_list'>${listTop + listBot}</div>`
+  return `<div class='post_list' value='${obj.id}'>${listTop + listBot}</div>`
 }
 
-function xhrSend(url,data,method) {
-    // url = "http://localhost:3000" + url;
-    url = "http://18.222.129.254:3000" + url
-    console.log(data);
-    var xhr = new XMLHttpRequest();
 
-    xhr.open(method,url);
-    xhr.send(data);
-
-    xhr.addEventListener('load',function() {
-      var result = JSON.parse(xhr.responseText);
-      console.log(result);
-      makePost(result);
-  })
+function postListCk() {
+  console.log("do it")
+  var postList = document.querySelectorAll('.post_list')
+  for(let i = 0; i < postList.length; i++) {
+    postList[i].addEventListener('click',function() {
+      console.log(postList[i]);
+      var value = postList[i].getAttribute('value');
+      console.log(value);
+      window.location.href = `/read?id=${value}`
+    })
+  }
 }
 
 function init() {
-  xhrSend('/read/post','','get')
+  var xhr = xhrSend('/read/post','','get')
+  xhr.addEventListener('load',function() {
+    var result = JSON.parse(xhr.responseText);
+    console.log(result);
+    makePost(result);
+})
 }
 
 init();

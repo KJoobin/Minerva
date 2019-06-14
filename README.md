@@ -2,11 +2,30 @@
 
 - 회원목록 -
 
-create table identity ( id INT(11) unsigned AUTO_INCREMENT NOT NULL, email VARCHAR(40) NOT NULL, password VARCHAR(40) NOT NULL, nickname VARCHAR(40) NOT NULL, subscribe INT(11) NOT NULL, subscriber TEXT, picture TEXT, PRIMARY KEY(id) );
+create table identity ( id INT(11) unsigned AUTO_INCREMENT NOT NULL,   
+  email VARCHAR(40) NOT NULL,
+  password VARCHAR(40) NOT NULL,
+  nickname VARCHAR(40) NOT NULL,
+  subscribe INT(11) DEFAULT 0,
+  subscriber TEXT,
+  picture TEXT,
+  PRIMARY KEY(id) );
 
 -글 목록 -
 
 CREATE TABLE post ( id INT(11) unsigned AUTO_INCREMENT NOT NULL, UID INT(11) unsigned NOT NULL, category CHAR(8), subject CHAR(50) NOT NULL, created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP, content TEXT, response VARCHAR(2), source CHAR(20), picture TEXT, comment TEXT, hit INT(11) NOT NULL, emotion TEXT, PRIMARY KEY(id) );
+
+-댓글 목록 -
+CREATE TABLE comment (
+  id INT(11) unsigned AUTO_INCREMENT NOT NULL,
+  uid INT(11) unsigned NOT NULL,
+  post_id INT(11) unsigned NOT NULL,
+  content TEXT NOT NULL,
+  recomend INT(11) DEFAULT 0,
+  visual TINYINT DEFAULT 1,
+  emotion TINYINT NOT NULL,
+  PRIMARY KEY(id)
+);
 
 
 
@@ -21,3 +40,10 @@ CREATE TABLE post ( id INT(11) unsigned AUTO_INCREMENT NOT NULL, UID INT(11) uns
            //     else     console.log();                 // deleted
            //   });
            // }
+
+
+
+
+s%3AoCY1Lu6l5QnicPp5qSHzkS34sdo-w-8K.%2F%2BMXtcZvdRUeAkcRqDWwfb0nrdEDiTPKXMNRP9NQPnU
+
+s%3AoCY1Lu6l5QnicPp5qSHzkS34sdo-w-8K.%2F%2BMXtcZvdRUeAkcRqDWwfb0nrdEDiTPKXMNRP9NQPnU

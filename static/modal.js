@@ -1,7 +1,8 @@
 
 
 function makeModal(text) {
-  if(!document.querySelector(".profile").childNodes.length) {
+  console.log("make Modal")
+  if(!document.querySelector(".profile img").childNodes.length) {
     modalManage();
     modalDiv();
     closeModal();

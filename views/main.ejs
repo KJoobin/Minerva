@@ -7,12 +7,14 @@
   </head>
   <body class="Expand">
     <div class = "page_head">
-      <div class="logo"><img src="https://nearbyfriends.s3.ap-northeast-2.amazonaws.com/Minerva/Minerva_logo.jpeg"></a></div>
+      <div class="logo"><img src="https://nearbyfriends.s3.ap-northeast-2.amazonaws.com/Minerva/Minerva_logo.jpeg"></img></div>
       <div class="copy"><div> C O P Y </div></div>
       <div class="main_profile">
-        <div class="profile"></div>
+        <button class="H(100)" id='js-login_button'> 로그인/회원가입 </button>
+        <div class="profile none" id=<%=id%>> <img src= <%= picture %> > </div>
       </div>
     </div>
+    <div id='modal-manage'></div>
     <div class="posG">
     <div class="Ad left"></div>
     <div class= "layout">
@@ -55,4 +57,6 @@
   <script src="./main/main.js"></script>
   <script src="modal.js"></script>
   <script src='./topHead.js'></script>
+  <script src='./log/modal.js'></script>
+  <script src='./xhrSend.js'></script>
 </html>
