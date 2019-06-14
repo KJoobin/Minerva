@@ -38,17 +38,22 @@ connection.connect();
 
 
 router.get('/',function(req,res) {
-  res.render(path.join(__dirname,"../views/writing.ejs"))
+  if(req.user) {
+    req.user.picture === null ? pic = "" : pic = req.user.picture
+    res.render(path.join(__dirname,"../views/writing.ejs"),{id:req.user.id, picture : pic})
+  } else {
+    res.render(path.join(__dirname,"../views/writing.ejs"),{id:"", picture:""})
+  }
 })
 
 router.post('/', upload.array('img'), function(req,res) {
+  var info = {};
   var data = req.body;
   console.log(data);
-  var info = {};
   var img = req.files;
   var imgs = imgToArr(img);
   var emotion = "[0,0,0]"
-  info.UID = 1;
+  info.UID = req.user.id
   info.subject = data.title;
   info.category = data.category;
   info.tag = data.tag;
@@ -58,9 +63,7 @@ router.post('/', upload.array('img'), function(req,res) {
   info.emotion = emotion;
   info.hit = 0;
   info.picture = imgs;
-  // console.log(1,data.category,data.title,data.desc,imgs,0,emotion)
 
-  console.log(`INSERT INTO post(UID, category, subject, content, picture, hit, emotion ) values = ?`,[1,data.category,data.title,data.desc,imgs,0,emotion])
   connection.query(`INSERT INTO post SET  ? `,info,function(err,rows) {
     if(err) throw err;
   })

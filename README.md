@@ -29,6 +29,7 @@ CREATE TABLE comment (
 
 
 
+
            // if(rows[0].picture !== null) {
            //   var picture = path.basename(rows[0].picture)
            //   var params = {

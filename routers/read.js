@@ -14,11 +14,13 @@ const connection = mysql.createConnection({
 connection.connect();
 
 router.get('/post',function(req,res) {
-  data = {};
+  data = [];
   connection.query('SELECT * FROM post',function(err,rows) {
-    if(err) throw err;
-    res.send(rows);
-  })
+      if(err) throw err;
+      data = rows;
+      console.log("rows data",data[0]);
+        res.send(rows);
+    })
 })
 
 router.get('/',function(req,res) {
@@ -53,6 +55,7 @@ router.get('/',function(req,res) {
     })
   }
 })
+
 
 
 module.exports = router

@@ -68,7 +68,7 @@ router.post('/', function(req, res, next) {
         if (!user) { return res.status(401).json(info); }
         req.logIn(user, function(err) {
           if (err) { return next(err); }
-          return res.sned("{}");
+          return res.send("{}");
         });
       })(req, res, next);
 });

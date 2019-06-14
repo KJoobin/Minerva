@@ -7,6 +7,7 @@ var read = require('./read.js')
 var login = require('./login.js')
 var logout = require('./logout.js')
 var join = require('./join.js')
+var authorNick = require('./authorNick')
 
 // var path = require('path')
 // var join = require('./join/join')
@@ -43,6 +44,7 @@ router.use('/read',read)
 router.use('/login',login)
 router.use('/logout',logout)
 router.use('/join',join)
+router.use('/authorNick',authorNick)
 
 
 module.exports = router
