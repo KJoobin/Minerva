@@ -1,6 +1,6 @@
 function xhrSend(url,data,method,type) {
-    url = "http://localhost:3000" + url;
-    // url = "http://18.222.129.254:3000" + url
+    // url = "http://localhost:3000" + url;
+    url = "http://18.222.129.254:3000" + url
     console.log(data);
     var xhr = new XMLHttpRequest();
 
