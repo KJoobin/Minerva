@@ -74,7 +74,7 @@ router.post('/', upload.array('img'), function(req,res) {
     console.log("2 uid type",typeof uid,"--------",uid)
     uid = JSON.stringify(uid);
     console.log("3 uid type",typeof uid,"--------",uid)
-    connection.query(`INSERT INTO recomend ( post_id, UID, up, down) VALUES (${rows.insertId},'${uid}',${0},${0} )`,function(error,row) {
+    connection.query(`INSERT INTO recomend ( UID, up, down) VALUES ('${uid}',${0},${0} )`,function(error,row) {
       if(error) throw error;
       console.log(row);
     })

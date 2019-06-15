@@ -66,7 +66,14 @@ function bestestPost(obj) {
   var post = `<div class='post_list' id='${obj.id}'>${listTop + listBot}</div>`
   var bestTitle = document.querySelector('.a_best_title');
   bestTitle.innerHTML = post;
+}
 
+function bestPost(obj) {
+  var title = `<div class='main_title'>${obj.subject}</div>`
+  var listTop = `<div class='list_top' id='${obj.id}'> ${title} </div>`
+  var post = `<div class='post_list' id='${obj.id}'>${listTop}</div>`
+  var bestTitle = document.querySelector('.best_titles');
+  bestTitle.innerHTML = bestTitle.innerHTML + post;
 }
 
 function init() {

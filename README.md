@@ -40,9 +40,9 @@ CREATE TABLE comment (
   PRIMARY KEY(id)
 );
 
-CREATE TABLE recoment (
+CREATE TABLE recomend (
   id INT(11) unsigned AUTO_INCREMENT NOT NULL,
-  uid TEXT DEFAULT '[]',
+  uid TEXT,
   up INT(11) unsigned NOT NULL DEFAULT 0,
   down INT(11) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY(id)
