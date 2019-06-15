@@ -40,6 +40,14 @@ CREATE TABLE comment (
   PRIMARY KEY(id)
 );
 
+CREATE TABLE recoment (
+  id INT(11) unsigned AUTO_INCREMENT NOT NULL,
+  uid TEXT DEFAULT '[]',
+  up INT(11) unsigned NOT NULL DEFAULT 0,
+  down INT(11) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY(id)
+  );
+
 
 
 
@@ -55,11 +63,4 @@ CREATE TABLE comment (
            //   });
            // }
 ps -ef
-kill -9 
-
-
-
-
-s%3AoCY1Lu6l5QnicPp5qSHzkS34sdo-w-8K.%2F%2BMXtcZvdRUeAkcRqDWwfb0nrdEDiTPKXMNRP9NQPnU
-
-s%3AoCY1Lu6l5QnicPp5qSHzkS34sdo-w-8K.%2F%2BMXtcZvdRUeAkcRqDWwfb0nrdEDiTPKXMNRP9NQPnU
+kill -9

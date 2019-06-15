@@ -8,6 +8,7 @@ var login = require('./login.js')
 var logout = require('./logout.js')
 var join = require('./join.js')
 var mypage = require('./mypage/main.js')
+var best = require('./best.js')
 
 // var path = require('path')
 // var join = require('./join/join')
@@ -45,6 +46,7 @@ router.use('/login',login)
 router.use('/logout',logout)
 router.use('/join',join)
 router.use('/mypage',mypage)
+router.use('/best',best)
 
 
 module.exports = router

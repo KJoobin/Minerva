@@ -51,9 +51,14 @@ function join() {
     if(!isBlank) {
       data = JSON.stringify(data);
       xhr = xhrSend("/join",data,"post",true) // 데이터를 router/join/noin.js로 보낸다.
-      xhr.addEventListener('loal',function() {
-        alert("가입을 환영합니다.")
-        closeLogModal();
+      xhr.addEventListener('load',function() {
+        var result = JSON.parse(xhr.responseText);
+        if(result.message) {
+          alert(result.message);
+        } else {
+          alert("가입을 환영합니다.")
+          removeLogModal();
+        }
       })
     }
 }
