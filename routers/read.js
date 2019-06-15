@@ -65,7 +65,7 @@ router.get('/',function(req,res) {
 })
 
 router.post('/recomend',function(req,res) {
-  console.log("recomend is Work",req.body)
+  console.log("recomend is Work",req.body,req.query.id)
   var sql = `SELECT * FROM recomend WHERE id = ?`
   connection.query(sql,req.query.id,function(err,rows) {
     if(err) throw err;

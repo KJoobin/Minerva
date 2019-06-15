@@ -17,7 +17,7 @@ function ckBtn(data) {
     alert(" 로그인 먼저 하세요 ")
   } else {
     console.log('ckBtn = ',data);
-    url = '/read/recomend' + window.location.href.slice(27);
+    url = '/read/recomend' + window.location.search;
     var data = JSON.stringify(data);
     console.log("url = ",url);
     xhr = xhrSend(url,data,'post',true)

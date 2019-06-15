@@ -5,8 +5,8 @@ function addEvent() {
 function submit() {
   var textarea = document.querySelector('.form textarea');
   var data = {};
-  var url = window.location.href
-  url = "/read" + queryUrl(url);
+  var url = window.location.search
+  url = "/read" + url;
 
   if(textarea.value.length) {
     data.content = textarea.value;
@@ -44,11 +44,7 @@ function addComment(text) {
 </form>
 `
 }
-function queryUrl(url) {
-  var indexOfQuery = url.indexOf("/?id=");
-  url = url.slice(indexOfQuery);
-  return url;
-}
+
 function init() {
   addEvent()
 }
