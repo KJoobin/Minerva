@@ -7,11 +7,14 @@ function afterLog() {
 function loginModal() {
   var profile = document.querySelector(".profile")
     var loginText =`
-    <div><button id="login-btn">내정보</button></div>
+    <div><button id="mypage">내정보</button></div>
     <div><a href="/write"><button id="login-btn">글쓰기</button></a></div>
     <div><button id="logout-btn" onclick="logout()">로그아웃</button></div>
     <div id="errMsg"></div>`;
     makeModal(loginText)
+    document.querySelector('#mypage').addEventListener('click',function() {
+      window.location.href='/mypage'
+    })
     profile.removeEventListener("click",loginModal);
 }
 function profileModal() {

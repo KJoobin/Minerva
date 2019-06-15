@@ -14,10 +14,10 @@ const connection = mysql.createConnection({
 connection.connect();
 
 router.get('/post',function(req,res) {
+  console.log("read/post is word")
   var sql = `SELECT p.id, i.nickname, p.subject,p.content FROM post AS p LEFT JOIN identity AS i ON p.UID = i.ID`
   connection.query(sql,function(err,rows) {
       if(err) throw err;
-      console.log("rows data",rows);
         res.send(rows);
     })
 })
@@ -26,7 +26,7 @@ router.get('/',function(req,res) {
   data = {};
   if(req.user) {
     data.id = req.user.id;
-    req.user.picture === null ? data.picture = "" : data.picture = req.user.picture
+    req.user.picture === null ? data.picture = "https://s3.ap-northeast-2.amazonaws.com/nearbyfriends/profile_img/3092827.png" : data.picture = req.user.picture
     data.myNick = req.user.nick;
   } else {
     data.id = "";

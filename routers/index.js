@@ -7,6 +7,7 @@ var read = require('./read.js')
 var login = require('./login.js')
 var logout = require('./logout.js')
 var join = require('./join.js')
+var mypage = require('./mypage/main.js')
 
 // var path = require('path')
 // var join = require('./join/join')
@@ -22,7 +23,7 @@ var join = require('./join.js')
   router.get('/',function(req,res) {
     if(req.user) {
       console.log(req.user.picture)
-      req.user.picture === null ? pic = "" : pic = req.user.picture
+      req.user.picture === null ? pic = "https://s3.ap-northeast-2.amazonaws.com/nearbyfriends/profile_img/3092827.png" :pic = req.user.picture
       res.render(path.join(__dirname,"../views/main.ejs"),{id:req.user.id, picture : pic})
     } else {
       res.render(path.join(__dirname,"../views/main.ejs"),{id:"", picture:""})
@@ -43,6 +44,7 @@ router.use('/read',read)
 router.use('/login',login)
 router.use('/logout',logout)
 router.use('/join',join)
+router.use('/mypage',mypage)
 
 
 module.exports = router

@@ -54,6 +54,8 @@ CREATE TABLE comment (
            //     else     console.log();                 // deleted
            //   });
            // }
+ps -ef
+kill -9 
 
 
 

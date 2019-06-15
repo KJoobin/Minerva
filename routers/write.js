@@ -39,7 +39,8 @@ connection.connect();
 
 router.get('/',function(req,res) {
   if(req.user) {
-    req.user.picture === null ? pic = "" : pic = req.user.picture
+    req.user.picture === null ? pic = "https://s3.ap-northeast-2.amazonaws.com/nearbyfriends/profile_img/3092827.png" :pic = req.user.picture
+    // req.user.picture === null ? pic = "" : pic = req.user.picture
     res.render(path.join(__dirname,"../views/writing.ejs"),{id:req.user.id, picture : pic})
   } else {
     res.render(path.join(__dirname,"../views/writing.ejs"),{id:"", picture:""})

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="Expand">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body class="Expand">
+    <div class = "page_head">
+      <div class="logo"><img src="https://nearbyfriends.s3.ap-northeast-2.amazonaws.com/Minerva/Minerva_logo.jpeg"></img></div>
+      <div class="copy"><div> C O P Y </div></div>
+      <div class="main_profile">
+        <button class="H(100)" id='js-login_button'> 로그인/회원가입 </button>
+        <div class="profile none" id=<%=id%>> <img src= <%= picture %> > </div>
+      </div>
+    </div>
+    <div id='modal-manage'></div>
+            <!-- 로고 페이지  -->
+    <div class="posG">
+      <div class="Ad left"></div>
+      <div class= "layout">
+        <div class="mypage_profile center mypage_margin">
+          <img class="Expand" src=<%= picture %>>
+        </div>
+        <div class="textCenter mypage_margin">
+          <div> <%= nickname %> </div>
+          <button class="change" name="changeImg">프로필 사진 바꾸기</button>
+        </div>
+        <div class='mypage_filter'>
+          <button class='mypage_left_btn mypage_btn_size' id='recent_btn'> 최신글 </button><button class='mypage_left_btn mypage_btn_size' id='hot'> 인기글 </button>
+        </div>
+        <div class='posts'>
+        </div>
+      </div>
+      <div class="Ad right"></div>
+    </div>
+    <div id="footer" class="footer" role="contentinfo">
+      <div> 이 홈페이지는 익명성 과 투명성을 위하여 만들어짐 </div>
+    </div>
+    <script src="/modal.js"></script>
+    <script src='/topHead.js'></script>
+    <script src='/log/modal.js'></script>
+    <script src='/xhrSend.js'></script>
+    <script src='/mypage.js'></script>
+
+    </script>
+  </body>
+</html>
