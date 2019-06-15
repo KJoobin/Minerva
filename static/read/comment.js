@@ -1,19 +1,3 @@
-// <li class="list-group-item note-form clearfix">
-//   <!-- <form action="/read" method="post" class="note-create-form">  -->
-//     <input type="hidden" name="lastNoteId" value="1714927 " id="lastNoteId">
-//       <div class="content-body panel-body pull-left note-create-form">
-//         <div style="margin-left: 5px;">
-//           <div class="avatar avatar-medium clearfix "><div class="avatar-info"><a class="nickname" href="/user/info/84154" title="김주빈">김주빈</a> <div class="activity block"></div></div></div>
-//         </div>
-//           <fieldset class="form">
-//               <input type="hidden" name="note.textType" value="HTML" id="note.textType">
-//               <textarea name="note.text" id="note-create" placeholder="댓글 쓰기" class="form-control"></textarea>
-//           </fieldset>
-//       </div>
-//       <div class="content-function-cog note-submit-buttons clearfix">
-//           <p><a href="javascript://" id="note-create-cancel-btn" class="btn btn-default btn-wide" style="display: none;">취소</a></p>
-//           <input type="submit" name="create" id="btn-create-btn" class="btn btn-success btn-wide" value=" 등록">
-//       </div>
 function addEvent() {
   var btn = document.querySelector('input[type="submit"]');
   btn.addEventListener('click',submit);

@@ -622,6 +622,19 @@ font-size: 50px;
   font-size : 18px;
   margin-bottom: 20px;
 }
+.main_title {
+  font-size : 20px;
+  color : #00a0a0;
+  float:left;
+}
+.main_author {
+  float : right;
+  color: #63caff;
+}
+.main_desc {
+  font-size : 15px;
+  margin-bottom: 5px;
+}
 /* desc */
 .desc_lay {
   background-color: white;
@@ -722,4 +735,8 @@ a.nickname {
 .timeago {
   color:#ccc;
   font-size:12px;
+}
+.desc_img {
+  width : 100px;
+  height:100px;
 }
