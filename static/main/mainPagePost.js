@@ -2,7 +2,11 @@
 
 function makePost(data) {
   var length = data.length
-  var i = length - 5
+  if(length > 5) {
+    var i = length - 5
+  } else {
+    i = 0;
+  }
   for(i; i < length; i++) {
     list(data[i]);
   }
