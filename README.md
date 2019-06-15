@@ -13,7 +13,20 @@ create table identity ( id INT(11) unsigned AUTO_INCREMENT NOT NULL,
 
 -글 목록 -
 
-CREATE TABLE post ( id INT(11) unsigned AUTO_INCREMENT NOT NULL, UID INT(11) unsigned NOT NULL, category CHAR(8), subject CHAR(50) NOT NULL, created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP, content TEXT, response VARCHAR(2), source CHAR(20), picture TEXT, comment TEXT, hit INT(11) NOT NULL, emotion TEXT, PRIMARY KEY(id) );
+CREATE TABLE post ( id INT(11) unsigned AUTO_INCREMENT NOT NULL,
+UID INT(11) unsigned NOT NULL,
+category CHAR(8),
+subject CHAR(50) NOT NULL,
+created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP,
+content TEXT,
+response VARCHAR(2),
+source CHAR(20),
+picture TEXT,
+comment TEXT,
+hit INT(11) NOT NULL,
+emotion TEXT,
+PRIMARY KEY(id) );
 
 -댓글 목록 -
 CREATE TABLE comment (

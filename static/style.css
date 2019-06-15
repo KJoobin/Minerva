@@ -303,10 +303,12 @@ input {
 }
 ,
 /* (S) */
-.Sq\(30px\) {
+
+.Sq\(30px\){
   width:30px;
   height:30px;
 }
+
 /*  평가하기 */
 .star .half:before {
   content:"\2605";

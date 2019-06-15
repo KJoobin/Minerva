@@ -14,11 +14,10 @@ const connection = mysql.createConnection({
 connection.connect();
 
 router.get('/post',function(req,res) {
-  data = [];
-  connection.query('SELECT * FROM post',function(err,rows) {
+  var sql = `SELECT p.id, i.nickname, p.content FROM post AS p LEFT JOIN identity AS i ON p.UID = i.ID`
+  connection.query(sql,function(err,rows) {
       if(err) throw err;
-      data = rows;
-      console.log("rows data",data[0]);
+      console.log("rows data",rows);
         res.send(rows);
     })
 })
