@@ -301,12 +301,13 @@ input {
 .R\(n\) {
   resize: none;
 }
-,
 /* (S) */
 
 .Sq\(30px\){
+
   width:30px;
   height:30px;
+
 }
 
 /*  평가하기 */
