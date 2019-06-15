@@ -78,9 +78,9 @@ router.post('/recomend',function(req,res) {
       uid = JSON.stringify(uid);
       console.log(uid,"------",typeof uid);
       if(req.body.recomend === 'up') {
-        sql = `UPDATE recomend SET UP = ${rows[0].up + 1}, UID = "${uid}" WHERE id = ?`
+        sql = `UPDATE recomend SET up = ${rows[0].up + 1}, uid = "${uid}" WHERE id = ?`
       } else if(req.body.recomend === 'down') {
-        sql = `UPDATE recomend SET down = ${rows[0].down + 1}, UID = "${uid}" WHERE id = ?`
+        sql = `UPDATE recomend SET down = ${rows[0].down + 1}, uid = "${uid}" WHERE id = ?`
       }
       connection.query(sql,req.query.id,function(err,row) {
         if (err) throw err;
