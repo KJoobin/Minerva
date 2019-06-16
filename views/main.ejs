@@ -37,6 +37,13 @@
       <div class="bottom_title">
         <div class="feed">
           <div class="feed_head"><div class="Expand center"> 실시간 피드 </div></div>
+          <div class='chat_feed'></div>
+          <div class='input_feed'>
+            <form class="feed_form">
+              <input id='feed_message' />
+              <button class='feed_submit'>전송</button>
+            </form>
+          </div>
         </div>
         <div class="recomend">
           <div class="recomend_head">
@@ -58,4 +65,23 @@
   <script src='./log/modal.js'></script>
   <script src='./xhrSend.js'></script>
   <script src='./main/mainPagePost.js'></script>
+  <script src='/socket.io/socket.io.js'></script>
+  <script>
+    var socket = io();
+    var feedForm = document.querySelector('.feed_form')
+    var msg = document.querySelector('#feed_message')
+    feedForm.onsubmit = function(e) {
+      e.preventDefault();
+      socket.emit('chat message',msg.value);
+      msg.value = '';
+      return false;
+    }
+    socket.on('chat message', function(msg) {
+      var chatDiv = document.querySelector('.chat_feed');
+      var li = document.createElement('li');
+      li.innerText = msg;
+      chatDiv.prepend(li)
+    })
+
+  </script>
 </html>

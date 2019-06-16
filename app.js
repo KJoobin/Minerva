@@ -1,11 +1,14 @@
 var express = require('express')
 var app = express()
+var http = require('http').createServer(app);
 var router = require('./routers/index')
 var passport = require('passport') // facebook, twitter 등을 사용하여 인
 var LocalStrategy = require('passport-local').Strategy
 var session = require('express-session') // 세션 데이터를 서버측에 저장
 var flash = require('connect-flash');
 var AWS = require('aws-sdk');
+var socket = require('socket.io')
+var io = socket(http);
 
 AWS.config.region = process.env.REGION
 
@@ -18,7 +21,17 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.set("view engine", "ejs")
 
-app.listen(3000,function() {
+io.on('connection',function(socket) {
+  console.log('a user connected');
+  socket.on('chat message', function(msg){
+    console.log('message : ' + msg);
+    io.emit('chat message',msg);
+  })
+  socket.on('disconnect',function() {
+    console.log('user disconnected');
+  })
+})
+http.listen(3000,function() {
   console.log("start ! port 3000! ")
 })
 

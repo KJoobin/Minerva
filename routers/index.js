@@ -1,7 +1,10 @@
 var express = require('express')
 var app = express()
+var http = require('http')
 var router = express.Router()
 var path = require("path")
+var socket = require('socket.io')
+var io = socket(http);
 var write = require("./write.js")
 var read = require('./read.js')
 var login = require('./login.js')
@@ -29,6 +32,10 @@ var best = require('./best.js')
     } else {
       res.render(path.join(__dirname,"../views/main.ejs"),{id:"", picture:""})
     }
+  })
+
+  io.on('connection',function(socket) {
+    console.log('a user connected');
   })
 
 // router.use('/join',join)
