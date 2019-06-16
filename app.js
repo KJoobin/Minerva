@@ -9,6 +9,19 @@ var flash = require('connect-flash');
 var AWS = require('aws-sdk');
 var socket = require('socket.io')
 var io = socket(http);
+var mysql = require('mysql')
+
+const connection = mysql.createConnection({
+  host      : 'localhost',
+  user      : 'root',
+  password  : 'baby',
+  database  : 'minerva'
+});
+
+connection.connect();
+
+
+
 
 AWS.config.region = process.env.REGION
 
@@ -25,6 +38,12 @@ io.on('connection',function(socket) {
   console.log('a user connected');
   socket.on('chat message', function(msg){
     console.log('message : ' + msg);
+    connection.query(`INSERT feed SET feed="${msg}"`,function(err,rows){
+      if(err) throw err;
+      connection.query(`DELETE FROM feed ORDER BY id LIMIT 1`,function(err,rows){
+        if(err) throw err;
+      })
+    })
     io.emit('chat message',msg);
   })
   socket.on('disconnect',function() {

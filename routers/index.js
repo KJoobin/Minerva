@@ -12,17 +12,7 @@ var logout = require('./logout.js')
 var join = require('./join.js')
 var mypage = require('./mypage/main.js')
 var best = require('./best.js')
-
-// var path = require('path')
-// var join = require('./join/join')
-// var login = require('./login/login')
-// var logout = require('./logout/logout')
-// var editor = require('./post/editor.js')
-// var list = require('./list/list.js')
-// var myPage = require('./myPage/main')
-// var write = require('./write/write')
-// var main = require('./main/main')
-
+var feed = require('./feed.js')
 
   router.get('/',function(req,res) {
     if(req.user) {
@@ -54,6 +44,7 @@ router.use('/logout',logout)
 router.use('/join',join)
 router.use('/mypage',mypage)
 router.use('/best',best)
+router.use('/feed',feed)
 
 
 module.exports = router
