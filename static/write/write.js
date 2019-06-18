@@ -21,8 +21,8 @@ function regist() {
   }
   if(formData.get("title").length < 5 && formData.get("title").length > 45) {
     alert("제목이 너무 길거나 짧습니다 5글자이상 50글자 이하로 입력해주세요")
-  }else if(formData.get("desc").length < 50 ) {
-    alert("내용을 50글자 이상 입력해주세요")
+  }else if(formData.get("desc").length < 300 ) {
+    alert("내용을 300글자 이상 입력해주세요")
   }else if (!formData.get("source").length) {
     alert("출처를 정확히 입력해주세요")
   } else if (formData.get("response") === "" ) {

@@ -12,7 +12,6 @@ function makePost(data) {
 }
 
 function list(obj) {
-  console.log(obj)
     var div = document.createElement('div');
     div.classList.add('post_list')
     var title = `<div class='main_title'>${obj.subject}</div>`
@@ -32,23 +31,28 @@ function addPost(data) {
 function postListCk() {
   var postList = document.querySelectorAll('.post_list')
   for(let i = 0; i < postList.length; i++) {
-    console.log(postList[i],"    ", " 이벤트 추가 ")
     postList[i].addEventListener('click',function() {
       var value = postList[i].attributes.id.value;
       window.location.href = `/read?id=${value}`
     })
   }
 }
-function makeBestPost() {
-  var xhr = getData();
+function makeBestPost(time) {
+  var bestTitle = document.querySelector('.a_best_title');
+  var bestTitles = document.querySelector('.best_titles');
+  var xhr = getData(time);
   xhr.addEventListener('load',function() {
     var result = JSON.parse(xhr.responseText);
-    console.log(result);
+    bestTitle.innerHTML = "";
+    bestTitles.innerHTML = "";
     bestPosts(result);
   })
 }
-function getData() {
-  return xhrSend('/best','','get',true);
+function getData(time) {
+  var data = {};
+  data.time = time;
+  data = JSON.stringify(data);
+  return xhrSend('/best',data,'post',true);
 }
 
 function bestPosts(data) {
@@ -56,18 +60,20 @@ function bestPosts(data) {
   for(var i = 1; i < data.length; i++) {
     bestPost(data[i])
   }
-
+  postListCk();
 }
 function bestestPost(obj) {
-  obj.picture = JSON.parse(obj.picture)
-  var title = `<div class='main_title'>${obj.subject}</div>`
-  var desc = `<div class='main_desc'>${obj.content.length > 50 ? obj.content.slice(0,50) + `...` : obj.content }</div>`
-  var img = `<img class='best_img' src=${obj.picture}>`
-  var listTop = `<div class='list_top' id='${obj.id}'> ${title} </div>`
-  var listBot = `<div class='list_bot'>${desc} ${img}</div>`
-  var post = `<div class='post_list' id='${obj.id}'>${listTop + listBot}</div>`
-  var bestTitle = document.querySelector('.a_best_title');
-  bestTitle.innerHTML = post;
+  if(obj) {
+    obj.picture = JSON.parse(obj.picture)
+    var title = `<div class='main_title'>${obj.subject}</div>`
+    var desc = `<div class='main_desc'>${obj.content.length > 50 ? obj.content.slice(0,50) + `...` : obj.content }</div>`
+    var img = `<img class='best_img' src=${obj.picture}>`
+    var listTop = `<div class='list_top' id='${obj.id}'> ${title} </div>`
+    var listBot = `<div class='list_bot'>${desc} ${img}</div>`
+    var post = `<div class='post_list' id='${obj.id}'>${listTop + listBot}</div>`
+    var bestTitle = document.querySelector('.a_best_title');
+    bestTitle.innerHTML = post;
+  }
 }
 
 function bestPost(obj) {
@@ -77,13 +83,26 @@ function bestPost(obj) {
   var bestTitle = document.querySelector('.best_titles');
   bestTitle.innerHTML = bestTitle.innerHTML + post;
 }
-
+function bestTapEvt() {
+  var doc = document;
+  var oneDay = 1000000;
+  doc.querySelector('.days').addEventListener('click',function() {
+    makeBestPost(oneDay);
+  })
+  doc.querySelector('.weekend').addEventListener('click',function() {
+    makeBestPost( 7 * oneDay);
+  })
+  doc.querySelector('.month').addEventListener('click',function() {
+    makeBestPost(30 * oneDay)
+  })
+}
 function init() {
-  makeBestPost();
+  makeBestPost(1000000);
   var xhr = xhrSend('/read/post','','get')
   xhr.addEventListener('load',function() {
     var result = JSON.parse(xhr.responseText);
     makePost(result);
   })
+  bestTapEvt()
 }
 init();

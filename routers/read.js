@@ -15,10 +15,16 @@ connection.connect();
 
 router.get('/post',function(req,res) {
   console.log("read/post is word")
-  var sql = `SELECT p.id, i.nickname, p.subject,p.content FROM post AS p LEFT JOIN identity AS i ON p.UID = i.ID ORDER BY id DESC LIMIT 5`
+  var now = new Date
+  now = now.getTime()
+  var day = 24 * 60 * 60 * 1000;
+  var sql = `SELECT p.id, i.nickname, p.subject,p.content, p.created_at FROM post AS p LEFT JOIN identity AS i ON p.UID = i.ID WHERE created_at > ${now} ORDER BY id DESC LIMIT 5`
   connection.query(sql,function(err,rows) {
       if(err) throw err;
-      console.log("read_data_rows",rows);
+      console.log("read_data_rows ################### ",rows);
+      for(var i = 0; i < rows.length; i++) {
+        console.log(rows[0].created_at > now );
+      }
         res.send(rows);
     })
 })
@@ -53,6 +59,7 @@ router.get('/',function(req,res) {
       data.emotion2 = rows[0].emotion[1];
       data.emotion3 = rows[0].emotion[2];
       data.create = rows[0].created_at
+      console.log(data.create.getTime());
       picture = JSON.parse(rows[0].picture);
       data.img1 = picture[0]
       data.img2 = picture[1]
