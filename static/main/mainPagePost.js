@@ -1,11 +1,5 @@
 function makePost(data) {
-  var length = data.length
-  if(length > 5) {
-    var i = length - 5
-  } else {
-    i = 0;
-  }
-  for(i; i < length; i++) {
+  for(i = 0; i < data.length; i++) {
     list(data[i]);
   }
   postListCk();
@@ -25,7 +19,7 @@ function list(obj) {
 
 function addPost(data) {
   var posts = document.querySelector('.recomend_body')
-  posts.innerHTML = data + posts.innerHTML;
+  posts.innerHTML += data
 }
 
 function postListCk() {
@@ -87,7 +81,7 @@ function bestTapEvt() {
   var doc = document;
   var oneDay = 1000000;
   doc.querySelector('.days').addEventListener('click',function() {
-    makeBestPost(oneDay);
+    makeBestPost(oneDay,);
   })
   doc.querySelector('.weekend').addEventListener('click',function() {
     makeBestPost( 7 * oneDay);

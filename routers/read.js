@@ -17,14 +17,26 @@ router.get('/post',function(req,res) {
   console.log("read/post is word")
   var now = new Date
   now = now.getTime()
-  var day = 24 * 60 * 60 * 1000;
-  var sql = `SELECT p.id, i.nickname, p.subject,p.content, p.created_at FROM post AS p LEFT JOIN identity AS i ON p.UID = i.ID WHERE created_at > ${now} ORDER BY id DESC LIMIT 5`
+  var sql = `SELECT p.id, i.nickname, p.subject,p.content FROM post AS p LEFT JOIN identity AS i ON p.UID = i.ID ORDER BY id DESC LIMIT 5`
   connection.query(sql,function(err,rows) {
       if(err) throw err;
-      console.log("read_data_rows ################### ",rows);
-      for(var i = 0; i < rows.length; i++) {
-        console.log(rows[0].created_at > now );
-      }
+        res.send(rows);
+    })
+})
+
+router.post('/postList',function(req,res) {
+  console.log(req.body.time);
+  console.log(typeof req.body.time)
+  if(req.body.time === 0) {
+    req.body.time = 'now()'
+    stand = 'p.id'
+  } else {
+    stand = 're.up'
+  }
+  console.log(stand)
+  var sql = `SELECT p.id, i.nickname, p.subject,p.content, p.created_at FROM post AS p LEFT OUTER JOIN identity AS i ON p.UID = i.ID LEFT OUTER JOIN recomend AS re ON p.id = re.id  WHERE created_at > now() - ${req.body.time} ORDER BY ${stand} DESC LIMIT 50`
+  connection.query(sql,function(err,rows) {
+      if(err) throw err;
         res.send(rows);
     })
 })
@@ -40,14 +52,11 @@ router.get('/',function(req,res) {
     data.picture = "";
     data.myNick = "";
   }
-  console.log(req.query.id)
   if(req.query.id === undefined ) {
       res.render(path.join(__dirname,"../views/read.ejs"),data);
   } else {
     connection.query('SELECT p.subject, p.category, p.tag, p.content, p.source, p.response, p.emotion, p.created_at, p.picture, re.up, re.down FROM post AS p LEFT JOIN recomend AS re ON p.id = re.id WHERE p.id = ?',req.query.id,function(err,rows) {
       if(err) throw err;
-      console.log(rows[0]);
-
       data.subject = rows[0].subject;
       data.category = rows[0].category;
       !rows[0].tag ? data.tag = rows[0].category : data.tag = rows[0].tag;
@@ -59,7 +68,6 @@ router.get('/',function(req,res) {
       data.emotion2 = rows[0].emotion[1];
       data.emotion3 = rows[0].emotion[2];
       data.create = rows[0].created_at
-      console.log(data.create.getTime());
       picture = JSON.parse(rows[0].picture);
       data.img1 = picture[0]
       data.img2 = picture[1]

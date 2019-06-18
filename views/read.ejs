@@ -10,13 +10,23 @@
   <body class="Expand">
     <div class = "page_head">
       <div></div>
-      <h1 class='head_font center'> Be the Minerva! </h1>
+      <h1 class='head_font center'> Be the Minerva! <div class='logo'></div> </h1>
       <div class="main_profile">
         <button class="H(100)" id='js-login_button'> 로그인/회원가입 </button>
         <div class="profile none" id=<%=id%>> <img src= <%= picture %> > </div>
       </div>
     </div>
     <div id='modal-manage'></div>
+    <div class='space_btw_head_body center'>
+      <select class="ch" name="">
+        <option value="0">최신글</option>
+        <option value="1">일간_베스트</option>
+        <option value="2">주간_베스트</option>
+        <option value="3">월간_베스트</option>
+        <option value="4">Hot_베스트</option>
+      </select>
+    </div>
+    <!-- 로고 페이지  -->
     <div class="posG">
     <div class="Ad left"></div>
     <div class= "layout">
@@ -30,7 +40,6 @@
   <script src='/read/read.js'></script>
   <script src='/topHead.js'></script>
   <script src='/xhrSend.js'></script>
-  <script src='/read/recomend.js'></script>
 
 
 </html>

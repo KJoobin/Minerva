@@ -14,7 +14,7 @@ const connection = mysql.createConnection({
 connection.connect();
 
 router.post('/',function(req,res) {
-  connection.query(`SELECT p.id,p.subject, p.content, p.picture FROM post AS p LEFT JOIN recomend AS re ON p.id = re.id WHERE re.up > 100 AND p.created_at > now() - ${req.body.time} `,function(err,rows) {
+  connection.query(`SELECT p.id,p.subject, p.content, p.picture,re.up FROM post AS p LEFT JOIN recomend AS re ON p.id = re.id WHERE p.created_at > now() - ${req.body.time} ORDER BY re.up DESC limit 5 `,function(err,rows) {
     if(err) throw err;
     var data = [];
     var length = rows.length;
@@ -22,11 +22,7 @@ router.post('/',function(req,res) {
     if(limit < 0) {
       limit = 0;
     }
-
-    for(let i = rows.length - 1; i >= limit; i--) {
-      data.push(rows[i])
-    }
-    res.send(data);
+    res.send(rows);
   })
 })
 

@@ -1,6 +1,7 @@
 
 function makePost(data) {
-
+  var posts = document.querySelector('.posts')
+  posts.innerHTML = ''
   for(var i = 0; i < data.length; i++) {
     list(data[i]);
   }
@@ -22,7 +23,7 @@ function list(obj) {
 
 function addPost(data) {
   var posts = document.querySelector('.posts')
-  posts.innerHTML = data + posts.innerHTML;
+  posts.innerHTML += data;
 }
 
 function postListCk() {
@@ -34,14 +35,26 @@ function postListCk() {
     })
   }
 }
-
-function init() {
-  var xhr = xhrSend('/read/post','','get')
+function sendTimeValue(data) {
+  data = JSON.stringify(data);
+  var xhr = xhrSend('/read/postList',data,'post',true)
   xhr.addEventListener('load',function() {
     var result = JSON.parse(xhr.responseText);
-    console.log(result);
     makePost(result);
-})
+  })
+}
+function init() {
+
+  var selc = document.querySelector('.ch');
+  data = {};
+  data.time = 0;
+  sendTimeValue(data);
+  selc.addEventListener('change',function() {
+    var day = 1000000
+    var time = [0, day, 7 * day, 30 * day,'now()']
+    data.time = time[selc.value];
+    sendTimeValue(data);
+  })
 }
 
 init();
