@@ -529,10 +529,12 @@ button{
   border-bottom:0.1px black solid;
 }
 /* 배스트 탭 끝  */
-
+.head_font {
+  font-size : 70px;/
+}
 .more {
   float: right;
-  width:50px;
+  width:120px;
   margin-top:0px;
 }
 .more .fa {
@@ -586,6 +588,9 @@ font-size: 50px;
   border-top:1px solid #ddd;
 }
 /* list page */
+.white {
+  background-color: white;
+}
 .color_white {
  background-color: white;
  z-index:1;

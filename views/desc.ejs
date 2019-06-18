@@ -36,7 +36,7 @@
       </div>
       <div>
         <div class="ML MT ">출처</div>
-        <div><%= source %></div>
+        <div class="ML MT "> --- <%= source %></div>
         <div class="ML MT"> 첨부파일 </div>
         <img class='desc_img' alt="" src=<%=img1%>></img>
         <img class='desc_img' alt="" src=<%=img2%>></img>
@@ -45,9 +45,9 @@
       </div>
       <div>
         <div class ="ML MT"> 글 의 신뢰성 </div>
-        <div> <%= response %></div>
+        <div class="ML MT"> --- <%= response %></div>
       </div>
-      <div class="center">
+      <!-- <div class="center">
         <div>
           <div>
             <input type='radio' name='emotion'>
@@ -66,9 +66,9 @@
           </div>
           <div> <%= emotion3 %></div>
         </div>
-      </div>
+      </div> -->
       <div class='center'>
-        <button class='recomend' id='rec_up'><div>Up</div><div><%=up%></div></button><button class='recomend' id='rec_dow'><div>Down</div><div><%=down%></div></button>
+        <button class='recomend' id='rec_up'><div>신뢰합니다</div><div><%=up%></div></button><button class='recomend' id='rec_soso'><div>애매해요..</div><div>2</div></button><button class='recomend' id='rec_dow'><div>못믿겠습니다.</div><div><%=down%></div></button>
       </div>
       <ul class='list-group'>
         <li id="note-title" class="list-group-item note-title">
