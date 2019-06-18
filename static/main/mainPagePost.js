@@ -49,6 +49,7 @@ function makeBestPost() {
 function getData() {
   return xhrSend('/best','','get',true);
 }
+
 function bestPosts(data) {
   bestestPost(data[0]);
   for(var i = 1; i < data.length; i++) {

@@ -15,9 +15,10 @@ connection.connect();
 
 router.get('/post',function(req,res) {
   console.log("read/post is word")
-  var sql = `SELECT p.id, i.nickname, p.subject,p.content FROM post AS p LEFT JOIN identity AS i ON p.UID = i.ID`
+  var sql = `SELECT p.id, i.nickname, p.subject,p.content FROM post AS p LEFT JOIN identity AS i ON p.UID = i.ID ORDER BY id DESC LIMIT 5`
   connection.query(sql,function(err,rows) {
       if(err) throw err;
+      console.log("read_data_rows",rows);
         res.send(rows);
     })
 })

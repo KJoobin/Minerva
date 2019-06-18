@@ -59,6 +59,8 @@ router.post('/', upload.array('img'), function(req,res) {
   info.category = data.category;
   info.tag = data.tag;
   info.content = data.desc;
+  console.log("info_cont",info.centent);
+  console.log("data_desc",data.desc);
   info.source = data.source;
   info.response = data.response;
   info.emotion = emotion;

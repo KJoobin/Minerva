@@ -11,6 +11,7 @@ function addCkEvt() {
     ckBtn(data);
   })
 }
+
 function ckBtn(data) {
   var id = document.querySelector('.profile').attributes.id;
   if(id.value === "") {
@@ -44,12 +45,11 @@ function ckBtn(data) {
     })
   }
 }
-
-
-
-
+document.querySelector('.content').innerText
 
 function init () {
+  var cont = document.querySelector('.content')
+  cont.innerText = cont.innerHTML
   addCkEvt();
 }
 init();
