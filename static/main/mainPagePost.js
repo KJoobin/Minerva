@@ -32,6 +32,7 @@ function addPost(data) {
 function postListCk() {
   var postList = document.querySelectorAll('.post_list')
   for(let i = 0; i < postList.length; i++) {
+    console.log(postList[i],"    ", " 이벤트 추가 ")
     postList[i].addEventListener('click',function() {
       var value = postList[i].attributes.id.value;
       window.location.href = `/read?id=${value}`
