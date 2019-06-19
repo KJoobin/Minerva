@@ -533,7 +533,9 @@ button{
 }
 /* 배스트 탭 끝  */
 .head_font {
-  font-size : 70px;/
+  font-size : 70px;
+  width:0px;
+  height:130px;
 }
 .more {
   float: right;

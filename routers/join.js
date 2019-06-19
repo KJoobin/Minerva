@@ -37,7 +37,7 @@ passport.use('local-join', new LocalStrategy({
   passwordFiled : 'password',
   passReqToCallback : true
 }, function(req, email, password, done) {
-  var nicks = ['Abel','Baba','Ace','Bailey','Ada','Baldy','Adam','Bambi','Adelio',"cyma",'Daisy','Eavan','Eve','Farrell','Gabriel','Jace',"kkali",'Lee','Lisa','Phila','Primo','Roy','Sabrina','Sam','Puffy','Polo','Nia','Nicholas']
+  var nicks = ['Abel','Baba','Ace','Bailey','Ada','Baldy','Adam','Bambi','Adelio',"cyma",'Daisy','Eavan','Eve','Farrell','Gabriel','Jace',"kali",'Lee','Lisa','Phila','Primo','Roy','Sabrina','Sam','Puffy','Polo','Nia','Nicholas']
   var info = req.body;
   var query = connection.query('select * from identity where email=?', [email], function(err,row){
         if(err) return done(err);
