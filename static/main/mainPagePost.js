@@ -58,6 +58,7 @@ function bestPosts(data) {
 }
 function bestestPost(obj) {
   if(obj) {
+    console.log(obj.picture);
     obj.picture = JSON.parse(obj.picture)
     var title = `<div class='main_title'>${obj.subject}</div>`
     var desc = `<div class='main_desc'>${obj.content.length > 50 ? obj.content.slice(0,50) + `...` : obj.content }</div>`

@@ -64,3 +64,5 @@ CREATE TABLE recomend (
            // }
 ps -ef
 kill -9
+<!--  복붙용  -->
+update recomend set up =
