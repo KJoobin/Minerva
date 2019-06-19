@@ -39,7 +39,6 @@ function join() {
     var data = {};
     data.email = document.getElementsByName("email")[0].value;
     data.password = document.getElementsByName("password")[0].value;
-    data.nickname = document.getElementsByName("nickname")[0].value;
     console.log(data);
     for(var key in data) {
       if(!data[key].length) {
@@ -62,8 +61,6 @@ function join() {
       })
     }
 }
-
-
 function login() {
 
     var data = {};
@@ -114,7 +111,7 @@ var joinText =
 email: <input name="email" type="email"><br>
 <p id="errMsg"></p>
 password: <input name="password" type="text"><br>
-nickname: <input name="nickname" type="text"><br>
+nickname:        자동으로 지정됩니다.<div/>
 <button id ="join-btn-2">가입하기</button>
 </div>
 `
