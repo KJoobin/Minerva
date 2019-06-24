@@ -21,7 +21,11 @@ const connection = mysql.createConnection({
 connection.connect();
 
 
-
+setInterver(() => {
+  connection.query(`SELECT 1`,(err, rows) => {
+    if(err) throw err;
+  })
+}, 1000);
 
 AWS.config.region = process.env.REGION
 
